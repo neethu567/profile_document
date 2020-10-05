@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Summery &#8212; profile 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to profile’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="project-summery">
+<h1>Project Summery<a class="headerlink" href="#project-summery" title="Permalink to this headline">¶</a></h1>
+<p>This is a project to create a profile information</p>
+<div class="section" id="goal-achieved">
+<h2>Goal Achieved<a class="headerlink" href="#goal-achieved" title="Permalink to this headline">¶</a></h2>
+<p>Goal 1 - Familer with one to one relation.</p>
+<p>Goal 2 - familer with reverse relation.</p>
+</div>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p>Write the feilds in your or file.</p>
+<p><em>forms.py</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ProfileForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">first_name</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">initial</span> <span class="o">=</span> <span class="s2">&quot;first name&quot;</span><span class="p">)</span>
+    <span class="n">last_name</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span><span class="n">initial</span> <span class="o">=</span> <span class="s2">&quot;last name&quot;</span><span class="p">)</span>
+    <span class="n">mobile_number</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">initial</span> <span class="o">=</span> <span class="mi">242342342</span><span class="p">)</span>
+    <span class="n">address</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span> <span class="p">,</span><span class="n">initial</span> <span class="o">=</span> <span class="s2">&quot;your address&quot;</span><span class="p">)</span>
+    <span class="n">country</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span><span class="n">initial</span> <span class="o">=</span> <span class="s2">&quot;india&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>for creating models write models.py files</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span><span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">,</span><span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="c1"># profile_pic=models.FileField()</span>
+    <span class="c1"># first_name=models.CharField(max_length=200,blank=True)</span>
+    <span class="c1"># last_name=models.CharField(max_length=200,blank=True)</span>
+    <span class="c1"># birth_date=models.DateField(null=True,blank=True)</span>
+    <span class="n">mobile_number</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">address</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">country</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">def</span> <span class="nf">testy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span><span class="n">sender</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_user_profile</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span><span class="n">instance</span><span class="p">,</span><span class="n">created</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># print(&quot;signal triggered&quot;)</span>
+    <span class="c1"># print(instance)</span>
+    <span class="c1"># print(kwargs)</span>
+    <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
+        <span class="n">Profile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span><span class="n">sender</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_user_profile</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span><span class="n">instance</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>in views.py file include the logic for displaying
+for index view</p>
+<p><em>views.py</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c1"># if request.user.is_authenticated:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-pub_date&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;polls/index.html&#39;</span><span class="p">)</span>
+    <span class="n">profileform</span> <span class="o">=</span><span class="n">ProfileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;latest_question_list&#39;</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">,</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">profileform</span><span class="p">,</span>
+
+    <span class="p">}</span>
+<span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><em>for calling the html templates write the following function</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;polls/profile.html&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">({},</span> <span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><em>in templates write the following code</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;!-- CSS only --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&quot; integrity=&quot;sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z&quot; crossorigin=&quot;anonymous&quot;&gt;
+
+&lt;!-- JS, Popper.js, and jQuery --&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.5.1.slim.min.js&quot; integrity=&quot;sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js&quot; integrity=&quot;sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js&quot; integrity=&quot;sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+
+&lt;body&gt;
+&lt;a href=&quot;/logout/&quot; &gt;
+    &lt;button  target=&quot;_blank&quot; style=&quot;float:right;&quot; &gt;Logout&lt;/button&gt;
+&lt;/a&gt;
+&lt;a href=&quot;/setpassword/&quot; &gt;
+    &lt;button  target=&quot;_blank&quot; style=&quot;float:right;&quot; &gt;Reset Password&lt;/button&gt;
+&lt;/a&gt;
+&lt;br&gt;
+&lt;span id=&quot;info&quot; style=&quot;float:right&quot; &gt;
+{% if user.is_authenticated %}
+    &lt;p&gt;&lt;b&gt;User -&lt;/b&gt; {{ user.get_username}}. &lt;b&gt;Mail - &lt;/b&gt;{{ user.email}}.&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;first name -&lt;/b&gt; {{ user.first_name}}. &lt;b&gt;last name - &lt;/b&gt;{{ user.last_name}}.&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;mobile_number -&lt;/b&gt; {{ user.profile.mobile_number}}. &lt;b&gt;address- &lt;/b&gt;{{ user.profile.address}}.&lt;/p&gt;
+{% endif %}
+&lt;/span&gt;
+{% if latest_question_list %}
+    &lt;ul&gt;
+    {% for question in latest_question_list %}
+        &lt;li&gt;&lt;a href=&quot;{% url &#39;polls:detail&#39; question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;
+    {% endfor %}
+    &lt;/ul&gt;
+{% else %}
+    &lt;p&gt;No polls are available.&lt;/p&gt;
+{% endif %}
+
+
+&lt;div style=&quot;float:right&quot; &gt;
+
+&lt;form action=&quot;/profile-handle/&quot; method=&quot;post&quot;&gt;
+    {% csrf_token %}
+    {{ form.as_p }}
+    &lt;input type=&quot;submit&quot; value=&quot;Edit&quot;&gt;
+&lt;/form&gt;
+
+    &lt;!--&lt;p&gt;&lt;b&gt;First Name -&lt;/b&gt; {{form.first_name}}.&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;Last Name -&lt;/b&gt; {{form.last_name}}.&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;Date of Birth -&lt;/b&gt; {{form.birth_date}}.&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;Mobile Number -&lt;/b&gt; {{form.mobile_number}}.&lt;/p&gt;
+    &lt;p&gt; &lt;b&gt;Address - &lt;/b&gt;{{ user.address}}.&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;Country -&lt;/b&gt; {{form.country}}.&lt;/p&gt;--&gt;
+
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p><em>call the templates using</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;polls/profile.html&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">({},</span> <span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><em>take all data from th form and save in user profile module in view.py</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profile_handle</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">ProfileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">testy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+
+        <span class="n">mobile_number</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;mobile_number&#39;</span><span class="p">]</span>
+        <span class="n">address</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span>
+        <span class="n">country</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">first_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">last_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">profile</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">mobile_number</span> <span class="o">=</span> <span class="n">mobile_number</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">address</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/profile&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;  Not a valid &#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>urls for poles-urls.py</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">from</span><span class="o">.</span><span class="kn">import</span> <span class="nn">views</span>
+<span class="n">app_name</span><span class="o">=</span><span class="s1">&#39;polls&#39;</span>
+<span class="n">urlpatterns</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;login/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">login_page</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;logout/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">logout_page</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;logout&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;setpassword/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">set_password</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;set_password&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;profile-handle/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">profile_handle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;profileview&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;profile/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;login-handle/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">login_handle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index_handle&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;password-handle/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">password_handle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;password_handle&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;polls/&lt;int:pk&gt;/&#39;</span><span class="p">,</span><span class="n">views</span><span class="o">.</span><span class="n">DetailView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;detail&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;polls/&lt;int:pk&gt;/results/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ResultsView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;results&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;polls/&lt;int:question_id&gt;/vote/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vote&#39;</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>]</p>
+<p><em>setting file add the app name</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;polls&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">profile</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Summery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#goal-achieved">Goal Achieved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code">Code</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to profile’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, neethu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/intro.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
